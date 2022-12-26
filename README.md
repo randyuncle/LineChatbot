@@ -6,4 +6,7 @@
 
 ## 介紹
 
+首先，在開始之前，還請先加入一下好友~（可以用搜尋ID的方式(記得加"@")，或者是掃下圖中的QRcode）
 ![image](https://user-images.githubusercontent.com/74038554/209492743-f63bf328-f19a-45a2-a893-d8d144c0fe47.png)
+
+
