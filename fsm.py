@@ -23,7 +23,7 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
 
-        send_text_message(reply_token, "歡迎來到資訊頁面！\n\n＊本機器人的餐廳資料來源 - 愛食記\n＊本機器人的搜查到的所有餐廳皆是已營業的部分\n\n其餘功能詳細說明:\n1. rating: 在輸入\"rating\"後，本機器人會要您再額外輸入您所要查找的縣市(必填)，以及您想尋找的品類項目(可不填)，以可從該縣市中尋找愛食記中評分前10的店家\n2. popular: 在輸入\"popular\"後，本機器人會要您再額外輸入您所要查找的縣市(必填)，以及您想尋找的品類項目(可不填)，以可從該縣市中尋找愛食記中人氣前10的店家\n")
+        send_text_message(reply_token, "歡迎來到資訊頁面！\n\n＊本機器人的餐廳資料來源 - 愛食記\n＊本機器人的搜查到的所有餐廳皆是已營業的部分\n\n技術方面: \n1. 本機器人是以 finite state machine 來運作的，用來保障使用者輸入的資料都是符合本機器人的要求，才會繼續進行下去。\n2. 此機器人是以 python 來建置的，其中以 pipenv 來運行 flask server，防止本地環境遭到變動。\n3. 網路爬蟲技術是用 beautifulsoup4 模組來完成的\n4. 本程式只能由 ngrok 本地端來運行，沒有做 serverless 上的架設（主因是沒錢，但有免費的平台也沒看動怎麼架）\n\n指令詳細說明:\n1. rating: 在輸入\"rating\"後，本機器人會要您再額外輸入您所要查找的縣市(必填)，以及您想尋找的品類項目(可不填)，以可從該縣市中尋找愛食記中評分前10的店家\n2. popular: 在輸入\"popular\"後，本機器人會要您再額外輸入您所要查找的縣市(必填)，以及您想尋找的品類項目(可不填)，以可從該縣市中尋找愛食記中人氣前10的店家\n3. information: 顯示本訊息\n4. reset: 可在任何狀態使用，只要觸發就會回到初始狀態\n")
         self.go_back()
 
     def is_going_to_input_rating_area(self, event):
