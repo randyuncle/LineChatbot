@@ -54,7 +54,7 @@ class TocMachine(GraphMachine):
     def is_going_to_print_rating_list(self, event):
         global item
         text = event.message.text
-        if text == '火鍋' or text == '日式' or text == '精緻高級' or text == '早午餐' or text == '甜點類' or text == '約會餐廳類' or text == '韓式' or text == '餐酒館/酒吧' or text == '居酒屋':
+        if text == '火鍋' or text == '日式' or text == '燒肉' or text == '精緻高級' or text == '早午餐' or text == '甜點類' or text == '約會餐廳類' or text == '韓式' or text == '餐酒館/酒吧' or text == '居酒屋':
             item = text
             return True
         elif text == '無':
@@ -70,7 +70,7 @@ class TocMachine(GraphMachine):
         if item == '':
             res = requests.get("https://ifoodie.tw/explore/" + area + "/list?sortby=rating&opening=true")
         else:
-            res = requests.get("https://ifoodie.tw/explore/" + area + "/list/" + item + "/?sortby=rating&opening=true")
+            res = requests.get("https://ifoodie.tw/explore/" + area + "/list/" + item + "?sortby=rating&opening=true")
         soup = BeautifulSoup(res.content, "html.parser")
         tables = soup.find_all('div', {'class': 'jsx-3292609844 restaurant-info'}, limit=10)
 
@@ -78,9 +78,9 @@ class TocMachine(GraphMachine):
         for table in tables:
             title = table.find("a", {"class": "jsx-3292609844 title-text"}).getText()
             stars = table.find("div", {"class": "jsx-1207467136 text"}).getText()
-            costs = table.find("div", {"class": "jsx-3292609844 avg-price"}).getText()
+            #costs = table.find("div", {"class": "jsx-3292609844 avg-price"}).getText()
             address = table.find("div", {"class": "jsx-3292609844 address-row"}).getText()
-            contents += f"{title} \n此餐廳有{stars}顆星\n{costs}\n地址: {address}\n\n"
+            contents += f"{title} \n此餐廳有{stars}顆星\n地址: {address}\n\n"
 
         reply_token = event.reply_token
         send_text_message(reply_token, contents)
@@ -114,7 +114,7 @@ class TocMachine(GraphMachine):
     def is_going_to_print_popular_list(self, event):
         global item
         text = event.message.text
-        if text == '火鍋' or text == '日式' or text == '精緻高級' or text == '早午餐' or text == '甜點類' or text == '約會餐廳類' or text == '韓式' or text == '餐酒館/酒吧' or text == '居酒屋':
+        if text == '火鍋' or text == '日式' or text == '燒肉' or text == '精緻高級' or text == '早午餐' or text == '甜點類' or text == '約會餐廳類' or text == '韓式' or text == '餐酒館/酒吧' or text == '居酒屋':
             item = text
             return True
         elif text == '無':
@@ -130,7 +130,7 @@ class TocMachine(GraphMachine):
         if item == '':
             res = requests.get("https://ifoodie.tw/explore/" + area + "/list?sortby=popular&opening=true")
         else:
-            res = requests.get("https://ifoodie.tw/explore/" + area + "/list/" + item + "/?sortby=popular&opening=true")
+            res = requests.get("https://ifoodie.tw/explore/" + area + "/list/" + item + "?sortby=popular&opening=true")
         soup = BeautifulSoup(res.content, "html.parser")
         tables = soup.find_all('div', {'class': 'jsx-3292609844 restaurant-info'}, limit=10)
 
@@ -138,9 +138,9 @@ class TocMachine(GraphMachine):
         for table in tables:
             title = table.find("a", {"class": "jsx-3292609844 title-text"}).getText()
             stars = table.find("div", {"class": "jsx-1207467136 text"}).getText()
-            costs = table.find("div", {"class": "jsx-3292609844 avg-price"}).getText()
+            #costs = table.find("div", {"class": "jsx-3292609844 avg-price"}).getText()
             address = table.find("div", {"class": "jsx-3292609844 address-row"}).getText()
-            contents += f"{title} \n此餐廳有{stars}顆星\n{costs}\n地址: {address}\n\n"
+            contents += f"{title} \n此餐廳有{stars}顆星\n地址: {address}\n\n"
 
         reply_token = event.reply_token
         send_text_message(reply_token, contents)
