@@ -18,13 +18,13 @@
 ![fsm](https://user-images.githubusercontent.com/74038554/209526491-0fe7c3ec-d7ff-4774-97fd-45de5a9eb77f.png)
 
 - user: 輸入 "information"、"rating"、"popular" 來分別觸發機器人的功能
-- information: 顯示聊天機器人的詳細資訊
-- input_rating_area
-- input_rating_item
-- print_rating_list
-- input_popular_area
-- input_popular_item
-- print_popular_list
+- information: 若使用者在 user 輸入 information -> 顯示聊天機器人的詳細資訊，並返回 user
+- input_rating_area: 若使用者在 user 輸入 rating -> 即進入 input_rating_area 待命，等待用戶輸入想查找的縣市
+- input_rating_item: 若使用者在 input_rating_area 輸入合法的縣市 -> 即進入 input_rating_item 待命，等待使用者輸入想查找的品項
+- print_rating_list: 若使用者在 input_rating_item 輸入合法的品項或"無" -> 印出評分為基準的爬蟲結果，並返回 user
+- input_popular_area: 若使用者在 user 輸入 popular -> 即進入 input_popular_area 待命，等待用戶輸入想查找的縣市
+- input_popular_item: 若使用者在 input_popular_area 輸入合法的縣市 -> 即進入 input_popular_item 待命，等待使用者輸入想查找的品項
+- print_popular_list: 若使用者在 input_popular_item 輸入合法的品項或"無" -> 印出人氣為基準的爬蟲結果，並返回 user
 
 ## 介紹及功能展示
 
