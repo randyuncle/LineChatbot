@@ -18,13 +18,13 @@
 ![fsm](https://user-images.githubusercontent.com/74038554/209526491-0fe7c3ec-d7ff-4774-97fd-45de5a9eb77f.png)
 
 - user: 輸入 "information"、"rating"、"popular" 來分別觸發機器人的功能
-- information: 顯示聊天機器人的詳細資訊
-- input_rating_area
-- input_rating_item
-- print_rating_list
-- input_popular_area
-- input_popular_item
-- print_popular_list
+- information: 若使用者在 user 輸入 information -> 顯示聊天機器人的詳細資訊，並返回 user
+- input_rating_area: 若使用者在 user 輸入 rating -> 即進入 input_rating_area 待命，等待用戶輸入想查找的縣市
+- input_rating_item: 若使用者在 input_rating_area 輸入合法的縣市 -> 即進入 input_rating_item 待命，等待使用者輸入想查找的品項
+- print_rating_list: 若使用者在 input_rating_item 輸入合法的品項或"無" -> 印出評分為基準的爬蟲結果，並返回 user
+- input_popular_area: 若使用者在 user 輸入 popular -> 即進入 input_popular_area 待命，等待用戶輸入想查找的縣市
+- input_popular_item: 若使用者在 input_popular_area 輸入合法的縣市 -> 即進入 input_popular_item 待命，等待使用者輸入想查找的品項
+- print_popular_list: 若使用者在 input_popular_item 輸入合法的品項或"無" -> 印出人氣為基準的爬蟲結果，並返回 user
 
 ## 介紹及功能展示
 
@@ -36,9 +36,11 @@
 在一開始進去的時候，會有一個帶有基本功能介紹的歡迎訊息。
 ![image](https://user-images.githubusercontent.com/74038554/209519612-a95d8921-4a1b-4fbd-bb36-251b92be8e90.png)
 
+*注: 後續有加了一個 "reset" 指令，可以在任何狀態使用，輸入後直接強制回到初始狀態(user)
+
 ### information
 顯示出本隻聊天機器人的餐廳資料來源和相關功能的細節說明
-![image](https://user-images.githubusercontent.com/74038554/209529639-b986f428-dcf4-405e-9c90-e62270ab6b08.png)
+![image](https://user-images.githubusercontent.com/74038554/209559026-4727ae66-1b64-4476-bb77-2442b236c505.png)
 
 ### rating
 - 輸入 "rating" 後，本支機器人會以愛食記中的 "評分高低" 來作為搜索的依據
@@ -54,3 +56,9 @@
 
 ![image](https://user-images.githubusercontent.com/74038554/209549964-a09efed8-736f-4b68-904a-5840eed8ab19.png)
 ![image](https://user-images.githubusercontent.com/74038554/209549984-ff4b237f-0e61-472d-bffd-1a35f8ee4005.png)
+
+### reset
+- 輸入後，即回到初始狀態(user)
+
+![image](https://user-images.githubusercontent.com/74038554/209559542-5413c91a-2cd8-46a0-8131-dadf002749ae.png)
+

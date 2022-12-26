@@ -132,7 +132,13 @@ def webhook_handler():
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
         if response == False:
-            send_text_message(event.reply_token, "!請依照功能的說明進行操作!")
+            if machine.state != 'user' and event.message.text.lower() == 'reset':
+                send_text_message(event.reply_token, "已回到開頭!\n輸入\"information\"：顯示本機器人的詳細資訊。\n輸入\"rating\"：本機器人會以「評分」的高低來為您篩選前10推薦餐廳。\n輸入\"popular\"：本機器人會以「人氣」的高低來為您篩選前10推薦餐廳。\n隨意時間輸入\"reset\"：重頭開始")
+                machine.go_back()
+            elif machine.state == 'user' and event.message.text.lower() == 'reset':
+                send_text_message(event.reply_token, "您現在已在初始狀態\n輸入\"information\"：顯示本機器人的詳細資訊。\n輸入\"rating\"：本機器人會以「評分」的高低來為您篩選前10推薦餐廳。\n輸入\"popular\"：本機器人會以「人氣」的高低來為您篩選前10推薦餐廳。")
+            else:
+                send_text_message(event.reply_token, "!請依照功能的說明進行操作!")
 
     return "OK"
 
