@@ -10,6 +10,7 @@ line-bot-sdk = "*"
 transitions = "*"
 beautifulsoup4 = "*"
 python-dotenv = "*"
+graphviz = "*"
 
 [dev-packages]
 pytest = "*"

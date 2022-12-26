@@ -13,7 +13,7 @@ from utils import send_text_message
 load_dotenv() 
 
 machine = TocMachine(
-    states=["user", "information", "find_rating_ten", "find_popular_ten", "print_rating_list", "print_popular_list"],
+    states=["user", "information", "input_rating_area", "input_rating_item", "input_popular_area", "input_popular_item", "print_rating_list", "print_popular_list"],
     transitions=[
         {
             "trigger": "advance",
@@ -24,28 +24,40 @@ machine = TocMachine(
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "find_rating_ten",
-            "conditions": "is_going_to_find_rating_ten",
+            "dest": "input_rating_area",
+            "conditions": "is_going_to_input_rating_area",
+        },
+        {
+            "trigger": "advance",
+            "source": "input_rating_area",
+            "dest": "input_rating_item",
+            "conditions": "is_going_to_input_rating_item",
         },
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "find_popular_five",
-            "conditions": "is_going_to_find_popular_five",
+            "dest": "input_popular_area",
+            "conditions": "is_going_to_input_popular_area",
         },
         {
             "trigger": "advance",
-            "source": "find_rating_ten",
+            "source": "input_popular_area",
+            "dest": "input_popular_item",
+            "conditions": "is_going_to_input_popular_item",
+        },
+        {
+            "trigger": "advance",
+            "source": "input_rating_item",
             "dest": "print_rating_list",
             "conditions": "is_going_to_print_rating_list",
         },
         {
             "trigger": "advance",
-            "source": "find_popular_five",
+            "source": "input_popular_item",
             "dest": "print_popular_list",
             "conditions": "is_going_to_print_popular_list",
         },
-        {"trigger": "go_back", "source": ["information", "find_rating_ten", "find_popular_ten", "print_rating_list", "print_popular_list"], "dest": "user"},
+        {"trigger": "go_back", "source": ["information", "input_rating_area", "input_rating_item", "input_popular_area", "input_popular_item", "print_rating_list", "print_popular_list"], "dest": "user"},
     ],
     initial="user",
     auto_transitions=False,
@@ -53,7 +65,6 @@ machine = TocMachine(
 )
 
 app = Flask(__name__, static_url_path="")
-
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)

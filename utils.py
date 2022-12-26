@@ -3,7 +3,6 @@ import sys
 
 import bs4
 import requests
-import pandas
 
 from bs4 import BeautifulSoup
 
@@ -36,6 +35,7 @@ def send_button_message(reply_token, title, text, btn, url):
     return "OK"
 
 """
+失敗的作品(不會拿東西)
 def get_curr_commodity():
     res = requests.get('https://hk.investing.com/commodities/real-time-futures')
     res.encoding = 'utf-8'
